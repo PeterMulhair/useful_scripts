@@ -5,7 +5,8 @@
 
 * Run the 500 commands in groups of 50 at one time
 
-`#$ -cwd
+```Shell
+#$ -cwd
 #$ -V
 #$ -P omics
 #$ -l h_rt=48:00:00
@@ -15,6 +16,7 @@
 
 
 CMD=$(awk "NR==$SGE_TASK_ID" cmds.txt)
-eval $CMD`
+eval $CMD
+```
 
 ---
