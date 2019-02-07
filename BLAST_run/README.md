@@ -1,4 +1,4 @@
-#Run BLAST with preferred parameters in outmft 6
+# Run BLAST with preferred parameters in outmft 6
 
 Command to run BLAST in output format 6
 * Evalue e-5
