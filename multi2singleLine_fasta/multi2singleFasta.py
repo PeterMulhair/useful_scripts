@@ -10,4 +10,5 @@ for my_file in glob.glob("*.fasta"):
         for record in SeqIO.parse(f, 'fasta'):
             header = record.description
             seq = str(record.seq)
-            outF.write(header + '\n' + seq + '\n')
+            outF.write('>' + header + '\n' + seq + '\n')
+            
