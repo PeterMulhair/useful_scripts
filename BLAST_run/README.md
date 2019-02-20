@@ -1,5 +1,13 @@
 # Run BLAST with preferred parameters in outmft 6
 
+Command to make BLAST database
+
+```Shell
+makeblastdb -dbtype prot -in genome.fasta -out genome
+```
+
+---
+
 Command to run BLAST in output format 6
 * Evalue e-5
 * Max_target_seq 5000
