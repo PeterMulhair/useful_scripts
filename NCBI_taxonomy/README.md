@@ -21,14 +21,16 @@ ncbi = NCBITaxa()
 
 Given a list of species names:
 
-`amphimedon queenslandica
+```Shell
+amphimedon queenslandica
 caenorhabditis elegans
 drosophila melanogaster
 danio rerio
 gallus gallus
 ornithorhynchus anatinus
 sus scrofa
-homo sapien`
+homo sapien
+```
 
 
 * Get NCBITaxa ID from [NCBI Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/TaxIdentifier/tax_identifier.cgi) (file saved as `tax_report.txt`)
