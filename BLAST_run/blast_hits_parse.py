@@ -6,7 +6,7 @@ with open('genome.fasta') as genome:
     for record in SeqIO.parse(genome, 'fasta'):
         fasta_header = record.description
         geneID = record.id
-        seq = str(seq)
+        seq = str(record.seq)
 
     #Loop through each blastparsed file
     for my_file in glob.glob("*.blastparse"):
