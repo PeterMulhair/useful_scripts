@@ -22,3 +22,9 @@ blastp -query file.fasta -db genome -evalue 1e-5 -seg yes -soft_masking true -ma
 Use python script to parse blast output files
 
 `blast_parse.py`
+
+---
+
+Python script to pull out the significant blast hit sequences from the query genome for reciprocal blast
+
+`blast_hits_parse.py`
