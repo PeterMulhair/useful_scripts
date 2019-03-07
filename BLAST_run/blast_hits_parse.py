@@ -22,4 +22,4 @@ for my_file in glob.glob("*.blastparse"):
             #get the sequence for that gene from the above dictionary
             blast_hit_seq = geneID2seq[blast_hit]
             #Write the blast hit gene ID and its sequence to the recip file in fasta format
-            outF.write(">" + geneID + "\n" + seq + "\n")
+            outF.write(">" + blast_hit + "\n" + blast_hit_seq + "\n")
