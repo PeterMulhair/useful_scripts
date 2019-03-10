@@ -27,4 +27,4 @@ Use python script to parse blast output files
 
 Python script to pull out the significant blast hit sequences from the query genome for reciprocal blast
 
-`blast_hits_parse.py`
+`blast_hits_seqs.py`
