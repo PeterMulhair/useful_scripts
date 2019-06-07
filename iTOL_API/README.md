@@ -20,7 +20,7 @@ This script has two arguments that are required to run.
 python iTOL_API.py --tree tree.nwk --colour file.itol.colourstrips.txt
 ```
 
-If you wish to create a tree without coloured branches, comment out line 14 and line 40 and run the script as
+If you wish to create a tree without coloured branches, comment out line 14 and line 40 in the script and then run as
 
 ```Shell
 python iTOL_API.py --tree tree.nwk
@@ -40,8 +40,7 @@ This is done by running the python script `make_itol_colourFile.py`
 
 ## Run script on multiple newick files at once in a task array on ARC3 ##
 
-If you wish to run this on a number of newick trees at once, using a task array on ARC3, you must first create a cmds.txt file. This is a file with ea
-ch job that you wish to run for each newick file. 
+If you wish to run this on a number of newick trees at once, using a task array on ARC3, you must first create a cmds.txt file. This is a file with each job that you wish to run for each newick file. 
 
 Eg.
 ```Shell 
