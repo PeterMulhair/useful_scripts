@@ -51,7 +51,7 @@ python iTOL_API.py --tree tree3.nwk --colour file3.itol.colourstrips.txt
 
 To create this file use the script `create_cmds_file.py`
 
-The task array jobs can then by submitted using `qsub` to ARC3 by using the script (specifies 100 jobs, run 10 at a time):
+The task array jobs can then by submitted using `qsub` to ARC3 by using the script (specifies 100 jobs, run 20 at a time):
 
 ```Shell
 #$ -cwd                                                                                                                                             
