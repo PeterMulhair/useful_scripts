@@ -14,7 +14,7 @@ Additional scripts and parameters also included such as
 
 Use the script `iTOL_API.py` to run the job on a single newick tree.
 
-This script has two arguments that are required to run.
+This script has two arguments that are required to run. These are your newick tree & an annotation file to colour labeled branches.
 
 ```Shell
 python iTOL_API.py --tree tree.nwk --colour file.itol.colourstrips.txt
