@@ -8,7 +8,7 @@ Additional scripts and parameters also included such as
 * Colour code certain branches on the tree
 * Run task array on ARC3 to run multiple export jobs at once
 
-![Example labeled tree.](../../F4939_Domain1_tree.png)
+![Example labeled tree.](F4939_Domain1_tree.png)
 
 ---
 
