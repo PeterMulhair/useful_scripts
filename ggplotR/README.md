@@ -15,7 +15,7 @@ Eg. A table named `animal_species_count.csv` with animal phyla and the number of
 | Ecdysozoa        |	15	   |
 | Deuterostomia    |	33	   |
 
-You can load the data file in manually into R or import it from ((R commmand line)[https://www.statmethods.net/inputimportingdata.html])
+You can load the data file in manually into R or import it from ([R commmand line](https://www.statmethods.net/inputimportingdata.html))
 
 ```Shell
 df <- read.table("Filename.csv", header = TRUE)
@@ -77,7 +77,7 @@ scale_fill_manual(values = c("#f0027f", "#7fc97f", "#fb8072", "#fdc086", "#ffff9
 
 ![Example plot 2.](second_plot.png)
 
-**Tip** Hex colours can be obtained from the useful website ((colorbrewer.org)[http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3])
+**Tip** Hex colours can be obtained from the useful website ([colorbrewer.org](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3))
 
 ---
 
@@ -111,6 +111,8 @@ theme_classic() +
 scale_y_continuous(expand = c(0,0,0.1,0)) +
 labs(x = "Clade names", y = "Species count")
 ```
+
+---
 
 4. **Add in or edit text within the plot**
 
