@@ -9,7 +9,7 @@ Use the script `node_label.py` to run the job on a single newick tree.
 The script has an argument required (`--tree`) to run. This is your input newick tree file:
 
 ```Shell
-python node_label.py -tree treefile.nwk
+python node_label.py --tree treefile.nwk
 ```
 
 ---
