@@ -19,9 +19,9 @@ blastp -query file.fasta -db genome -evalue 1e-5 -seg yes -soft_masking true -ma
 
 ---
 
-Use python script to parse blast output files
+Use python script to parse blast output files: requires arguments with blast output file name and parsed file name
 
-`blast_parse.py`
+`blast_parse.py --blastout file.blastoutput.fa --blastparse file.blastparse`
 
 ---
 
