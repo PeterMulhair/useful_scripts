@@ -1,0 +1,72 @@
+#NEXUS
+
+Begin Data;
+   dimensions ntax=64 nchar=1;
+   format datatype=Standard symbols="0 1";
+   matrix
+    AEDAE      1
+    AMPQE      0
+    ANAPL      1
+    ANOCA      1
+    ANOGA      1
+    ASTMX      1
+    BRAFL      1
+    CAEBR      1
+    CAEEL      0
+    CAPTE      0
+    CHICK      1
+    CHOHO      1
+    CIOIN      0
+    CIOSA      0
+    DANPL      0
+    DANRE      0
+    DAPPU      0
+    DASNO      1
+    DROME      0
+    ECHTE      1
+    EDQOO      1
+    FICAL      1
+    GADMO      1
+    GASAC      1
+    HELRO      0
+    HUMAN      0
+    LATCH      1
+    LEPOC      1
+    LOTGI      0
+    LOXAF      1
+    MACEU      1
+    MELGA      1
+    MNELE      0
+    MONDO      0
+    MOUSE      1
+    MYOLU      1
+    NASVI      0
+    NEMVE      0
+    NOMLE      1
+    ONCVO      0
+    ORENI      1
+    ORNAN      0
+    ORYLA      0
+    OTOGA      1
+    PELSI      1
+    PETMA      1
+    PIGXX      0
+    POEFO      1
+    PROCA      1
+    RHOPR      1
+    SARHA      1
+    SCHMA      0
+    SORAR      0
+    STRMM      1
+    STRPU      0
+    TAEGU      1
+    TAKRU      0
+    TETNG      1
+    TETUR      0
+    TRICA      1
+    TRISP      0
+    XENTR      1
+    XIPMA      1
+    ZOONE      0
+  ;
+end;
