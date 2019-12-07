@@ -17,7 +17,7 @@ tree = Tree(args.tree)
 edge = 0
 for node in tree.traverse():
    if not node.is_leaf():
-      node.name = "NODE_%d" %edge
+      node.name = "%d" %edge
       edge += 1
 
 #Write the new labelled tree to a newick file
