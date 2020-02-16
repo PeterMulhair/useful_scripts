@@ -2,6 +2,14 @@
 import requests, sys
 from collections import defaultdict
 import json
+import argparse
+
+parse = argparse.ArgumentParser()
+
+parse.add_argument("--geneGOs",type=str, help="name of file with genes and specific GO IDs",required=True)
+
+args = parse.parse_args()
+
 
 #Get children GO IDs for Biological Processes category ie second tier GO terms (can be changed to any of the three broad GO terms given the specific GO ID)
 requestURL = "https://www.ebi.ac.uk/QuickGO/services/ontology/go/terms/GO%3A0008150/children" #Number following GO%3A is GO ID associated with biological processes
@@ -69,7 +77,7 @@ for GO in second_tier_GOterms:
 
 
 #Open dictionary of comp fams to specific GO IDs
-with open('BP_results/compFams_BP_GOIDs.json') as f:
+with open(args.geneGOs) as f:
   fam_GOids = json.load(f)
 
 #Get full list of GO terms in the dictionary
