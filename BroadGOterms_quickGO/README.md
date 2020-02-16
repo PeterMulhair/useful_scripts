@@ -4,11 +4,21 @@ From a list of specific GO terms, get their broader functional parent GO terms f
 
 * Details on the different GO datasets and how to use the API can be found at [QuickGO API](https://www.ebi.ac.uk/QuickGO/api/index.html#/)
 
-* Within the Gene Ontology database there is a hierarchy of functions, from broad functions to more specific ones. Given a starting dictionary of gene IDs to their specific GO IDs `gene_BP_GOIDs.json`, in order to find more broad functional patterns use the Python script to find second and third tier gene functions
-
-`quickGO_broad_GOcategories.py`
+* Within the Gene Ontology database there is a hierarchy of functions, from broad functions to more specific ones. With a set of specific GO terms it may be hard to interpret. This pipeline gets broad GO terms for a set of genes which may be more manageable.
 
 ---
+
+**Step 1**
+
+Given a starting dictionary of gene IDs to their specific GO IDs `gene_BP_GOIDs.json`, in order to find more broad functional patterms use the following Python script to find second and third tier gene functions
+
+`quickGO_broad_GOcategories.py --geneGOs gene_BP_GOIDs.json`
+
+The argument `--geneGOs` requires the name of the dictionary with gene names and specific GO terms (in this case called `gene_BP_GOIDs.json`)
+
+---
+
+**Step 2**
 
 This produces a dictionary in `.json` format of the specific GO term to its more broad GO IDs (Note: there may be multiple broad GO IDs for a single gene)
 
@@ -17,6 +27,8 @@ From this dictionary we can then create a dictionary of each of the broad GO IDs
 `quickGO_funcSearch.py`
 
 ---
+
+**Step 3**
 
 Finally, using the previous dictionaries we can create a text file of the gene IDs to their broad functions, using the script
 
