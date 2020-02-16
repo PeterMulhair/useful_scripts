@@ -32,6 +32,6 @@ From this dictionary we can then create a dictionary of each of the broad GO IDs
 
 Finally, using the previous dictionaries we can create a text file of the gene IDs to their broad functions, using the script
 
-`gene_broadFuncs.py`
+`gene_broadFuncs.py --geneGOs gene_BP_GOIDs.json`
 
 This produces a tab delimited file of the gene ID to its broad functions (which are separated by commas)
