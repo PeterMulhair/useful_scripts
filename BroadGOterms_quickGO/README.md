@@ -15,7 +15,7 @@ From a list of specific GO terms, get their broader functional parent GO terms f
 Given a starting dictionary of gene IDs to their specific GO IDs `gene_BP_GOIDs.json`, in order to find more broad functional patterms use the following Python script to find second and third tier gene functions
 
 ```Shell
-python quickGO_broad_GOcategories.py --geneGOs gene_BP_GOIDs.json`
+python quickGO_broad_GOcategories.py --geneGOs gene_BP_GOIDs.json
 ```
 
 The argument `--geneGOs` requires the name of the dictionary with gene names and specific GO terms (in this case called `gene_BP_GOIDs.json`)
@@ -31,7 +31,7 @@ This produces a dictionary in `.json` format of the specific GO term to its more
 From this dictionary we can then create a dictionary of each of the broad GO IDs to their functions, using the python script
 
 ```Shell
-python quickGO_funcSearch.py`
+python quickGO_funcSearch.py
 ```
 
 ---
@@ -43,7 +43,7 @@ python quickGO_funcSearch.py`
 Finally, using the previous dictionaries we can create a text file of the gene IDs to their broad functions, using the script
 
 ```Shell
-python gene_broadFuncs.py --geneGOs gene_BP_GOIDs.json`
+python gene_broadFuncs.py --geneGOs gene_BP_GOIDs.json
 ```
 
 This produces a tab delimited file of the gene ID to its broad functions (which are separated by commas)
