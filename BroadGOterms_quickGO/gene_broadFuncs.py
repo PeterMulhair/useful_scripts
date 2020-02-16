@@ -1,9 +1,16 @@
 #From the original dictionary of gene IDs to specific GO terms, use the newly created dictionaries to create a text file of the genes to their broad functions
 import json
 from collections import defaultdict
+import argparse
+
+parse = argparse.ArgumentParser()
+
+parse.add_argument("--geneGOs",type=str, help="name of file with genes and specific GO IDs",required=True)
+
+args = parse.parse_args()
 
 #Open the gene to specific GO ID dictionary 
-with open('gene_BP_GOIDs.json') as f:
+with open(args.geneGOs) as f:
     compGene_specGOs = json.load(f)
 
 #Open the specific GO ID to broad GO IDs dictionary 
@@ -36,7 +43,7 @@ for k, v in compGene_specGOs.items():#For each gene and specific GO ID
         continue
 
 #Write the geneID and its broad functions to a tab delimited file, with functions separated by commas
-with open('compGene_broadFunctions.tsv', 'w') as outF:
+with open('gene_broadFunctions.tsv', 'w') as outF:
     for gene, funcs in gene_broadFunctions.items():
         outF.write(gene + '\t')
         for fun in funcs:
