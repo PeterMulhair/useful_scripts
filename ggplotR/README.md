@@ -152,3 +152,56 @@ dev.off()
 ```
 
 To save as a pdf use `pdf("plot_name.pdf")`
+
+---
+
+## Using gggtree to create tree image
+
+Use the R package [ggtree](https://yulab-smu.github.io/treedata-book/) to plot images of trees.
+
+Given the newick format tree below, which consists of 64 species and include branch lengths and node support values:
+
+`(Aedes aegypti:0.087637,Anopheles gambiae:0.059293,(Drosophila melanogaster:0.199159,(Danaus plexippus:0.354794,(Tribolium castaneum:0.180106,(Nasonia vitripennis:0.166578,(Zootermopsis nevadensis:0.192399,(Rhodnius prolixus:0.20716,(Daphnia pulex:0.04854,(Strigamia maritima:0.119674,(Tetranychus urticae:0.105708,((Trichinella spiralis:0.090508,(Onchocerca volvulus:0.073041,(Caenorhabditis elegans:0.054613,Caenorhabditis briggsae:0.052424)1:1.04285)1:0.987151)1:0.348859,((Helobdella robusta:0.108252,Capitella teleta:0.03364)1:0.115117,((Strongylocentrotus purpuratus:0.139102,(Branchiostoma floridae:0.159512,((Ciona savignyi:0.092385,Ciona intestinalis:0.092569)1:0.543607,(Petromyzon marinus:0.264166,(Latimeria chalumnae:0.298188,((Lepisosteus oculatus:0.253566,(((((Xiphophorus maculatus:0.190836,Poecilia formosa:0.129671)1:0.115443,Oryzias latipes:0.380984)1:0.043072,Oreochromis niloticus:0.160935)0.8:0.008281,((Tetraodon nigroviridis:0.289209,Takifugu rubripes:0.157242)1:0.157425,(Gasterosteus aculeatus:0.188525,Gadus morhua:0.584905)1:0.113637)0.99:0.027175)1:0.106422,(Danio rerio:0.196567,Astyanax mexicanus:0.21643)1:0.117759)1:0.124904)0.99:0.207969,(Xenopus tropicalis:0.378014,((Ornithorhynchus anatinus:0.723455,((Sarcophilus harrisii:0.280769,Monodelphis domestica:0.449253,Macropus eugenii:0.757565)1:0.046953,(((Sus scrofa:0.350541,Myotis lucifugus:0.220458)1:0.059637,(Mus musculus:0.14452,(Otolemur garnettii:0.201358,(Nomascus leucogenys:0.195761,Homo sapiens:0.066923)1:0.092258)1:0.027296)0.98:0.008829)1:0.012573,((Loxodonta africana:0.215351,(Procavia capensis:0.476311,Echinops telfairi:0.632362)1:0.223566)1:0.034733,(Dasypus novemcinctus:0.212885,(Sorex araneus:0.757538,Choloepus hoffmanni:0.850977)0.99:0.310561)0.99:0.04929)0.77:0.006821)1:0.051093)0.99:0.038383)1:0.066903,(Anolis carolinensis:0.393925,(Pelodiscus sinensis:0.330775,((Taeniopygia guttata:0.329285,Ficedula albicollis:0.190623)1:0.072758,((Meleagris gallopavo:0.266305,Gallus gallus:0.163688)0.96:0.067749,Anas platyrhynchos:0.25933)1:0.044115)1:0.115851)1:0.048234)0.99:0.036557)0.99:0.060276)0.74:0.027583)0.7:0.107503)1:1.32804)1:0.558296)0.99:0.13554)1:0.225612)1:0.114272,(Lottia gigantea:0.076435,(Nematostella vectensis:0.052553,(Schistosoma mansoni:0.027074,(Mnemiopsis leidyi:0.008992,(Monosiga brevicollis:0.047237,Amphimedon queenslandica:0.009774)0.94:0.017951)1:0.126011)1:0.11286)0.99:0.09787)0.85:0.022313)0.93:0.027593)0.63:0.023643)0.73:0.033143)0.99:0.057932)1:0.134473)1:0.221911)0.97:0.09219)0.8:0.042031)0.99:0.055913)1:0.113745)1:0.214774)1:0.317247);`
+
+Use a tab delimited file which labels each species into its given phylum
+
+Eg. tree_tip_nodes.tsv:
+
+| Species name             | Phylum name   |
+| ------------------------ | ------------- |
+| Aedes aegypti            | Ecdysozoa     |
+| Amphimedon queenslandica | Porifera      |
+| Anas platyrhynchos       | Deuterostomia |
+| Anolis carolinensis      | Deuterostomia |
+| Anopheles gambiae        | Ecdysozoa     |
+
+
+Load required packages
+
+`library(ggtree)
+library(ggplot2)
+library(phytools)`
+
+Run the script, ensuring to root the tree on the required outgroup species
+
+```Shell
+tree <- read.newick("tree.nwk")
+
+reroot_tree <- reroot(tree, 63)
+
+tip_nodes <- read.csv("tree_tip_nodes.tsv", sep = "\t", col.names = c("species", "clade"), header = FALSE, stringsAsFactors = FALSE)
+clade_label <- as.data.frame(tip_nodes)
+
+t <- ggtree(reroot_tree) + geom_treescale()
+
+t1 <- t %<+% clade_label + geom_tiplab(aes(color = factor(clade), fontface = 'italic')) + scale_color_manual(values=c("#000000", "#62A85B", "#9466C9", "#B3943F", "#6295CD", "#CA5D46", "#C85990")) +
+labs(color = "Clade") +
+geom_text2(aes(subset = (label < 1), label=label))
+```
+
+If you're not sure which node number you need to root the tree at, use the below code to manually check the tree node labels and insert correct number into above code
+`ggtree(tree) + geom_tiplab() + geom_text(aes(label=node))`
+
+Some manual editing of the image (clade labels and tip colours) may be necessary to produce the below plot
+
+![Example plot 5.](tree_labels_support.png)
