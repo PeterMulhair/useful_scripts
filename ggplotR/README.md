@@ -155,7 +155,7 @@ To save as a pdf use `pdf("plot_name.pdf")`
 
 ---
 
-## Using gggtree to create tree image
+## Using ggtree to create tree image
 
 Use the R package [ggtree](https://yulab-smu.github.io/treedata-book/) to plot images of trees.
 
@@ -209,3 +209,46 @@ If you're not sure which node number you need to root the tree at, use the below
 Some manual editing of the image (clade labels and tip colours) may be necessary to produce the below plot
 
 ![Example plot 5.](tree_labels_support.png)
+
+
+---
+
+## Using ggplot to create boxplots of distribution values
+
+Given a tsv file with the distribution of 3' UTR lengths for each gene in Drosophila melanogaster and Homo sapiens
+
+Eg. species_utrLens.tsv (note this is an example and not fully complete file shown)
+
+| UTR length | Species name            |
+| 74         | Drosophila_melanogaster |
+| 74         | Drosophila_melanogaster |
+| 74         | Drosophila_melanogaster |
+| 76         | Drosophila_melanogaster |
+| 78         | Drosophila_melanogaster |
+| 52         | Homo_sapiens            |
+| 52         | Homo_sapiens            |
+| 56         | Homo_sapiens            |
+| 75         | Homo_sapiens            |
+| 75         | Homo_sapiens            |
+| 77         | Homo_sapiens            |
+| 78         | Homo_sapiens            |
+| 78         | Homo_sapiens            |
+
+
+Use the script to plot distributions of 3'UTR lengths for both species
+
+```Shell
+library(ggplot2)
+library(scales)
+
+UTR_count_largest <- ggplot(species_utrLens, aes(x = Species, y = UTR_length)) +
+geom_boxplot(aes(fill = Species)) +
+theme_classic() +
+theme(axis.title.x = element_blank(), axis.title.y = element_text(size = 35), axis.text.x = element_text(size = 30), axis.text.y = element_text(size = 30), legend.title = element_blank(), legend.position = "none") +
+ylab("3' UTR lengths") +
+scale_fill_manual(values = c("#fc9272", "#a6bddb")) +
+scale_y_continuous(labels=comma, breaks = seq(0, 35000, by = 5000))
+```
+
+![Example plot 6.](UTR3_lengths.png)
+
