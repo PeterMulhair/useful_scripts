@@ -253,3 +253,58 @@ scale_y_continuous(labels=comma, breaks = seq(0, 35000, by = 5000))
 
 ![Example plot 6.](UTR3_lengths.png)
 
+---
+
+## Using ggplot to plot rates of two independent values (here gain and loss) along a single plot
+
+Given a two tsv files with ordered list of node names and the rates of either gain or loss
+
+Eg. gain_rates.tsv
+
+| Node           | Gain_rate             |
+| -------------- | --------------------- |
+| Metazoa        | 0.003144609676767405  |
+| Eumetazoa      | 0.0010524227856558103 |
+| Planulozoa     | 0.036311327219421596  |
+| Bilateria      | 0.006259826980308288  |
+| Protostomia    | 0.006620863766567468  |
+| Lophotrochozoa | 0.0                   |
+| Ecdysozoa      | 0.0                   |
+| Deuterostomia  | 0.0628654970751043    |
+| Chordata       | 0.005847953216288773  |
+| Trochozoa      | 0.0                   |
+| Olfactores     | 0.007391552253951981  |
+| Vertebrata     | 0.13495942432810004   |
+
+loss_rate.tsv
+
+| Node           | Loss_rate             |
+| -------------- | --------------------- |
+| Metazoa        | 0.0                   |
+| Eumetazoa      | 0.0                   |
+| Planulozoa     | 0.0                   |
+| Bilateria      | 0.0                   |
+| Protostomia    | 0.0                   |
+| Lophotrochozoa | 0.0                   |
+| Ecdysozoa      | 0.0                   |
+| Deuterostomia  | 0.0                   |
+| Chordata       | 0.0                   |
+| Trochozoa      | 0.0014647306044027171 |
+| Olfactores     | 0.0                   |
+| Vertebrata     | 0.0032520343211590373 |
+
+
+Plot both rates per node as line plots onto a single image
+
+```Shell
+library(ggplot2)
+
+p = ggplot() + 
+  geom_line(data = gain_node_rate_ordered, aes(x = factor(Node, levels=unique(Node)), y = Gain_rate, group = 1), size = 1, color = "#2c8cbe") +
+  geom_line(data = loss_node_rate_ordered, aes(x = factor(Node, levels=unique(Node)), y = Loss_rate, group = 1), size = 1, color = "#a50f15") +
+  theme_classic() + theme(axis.text.x = element_text(angle = 70, hjust = 1,size = 15), axis.text.y = element_text(size = 15), axis.title.x = element_text(size = 20), axis.title.y = element_text(size = 20)) +
+  xlab("Lineage") + ylab("Gain/Loss Rates") +
+  scale_x_discrete(expand = c(0,0,0.1,0))
+```
+
+![Example plot 7.](node_rates.png)
