@@ -220,6 +220,7 @@ Given a tsv file with the distribution of 3' UTR lengths for each gene in Drosop
 Eg. species_utrLens.tsv (note this is an example and not fully complete file shown)
 
 | UTR length | Species name            |
+| ---------- | ----------------------- |
 | 74         | Drosophila_melanogaster |
 | 74         | Drosophila_melanogaster |
 | 74         | Drosophila_melanogaster |
