@@ -10,9 +10,9 @@
 for i in *fa; do; python primary_transcript.py $i; done
 ```
 
-This outputs to a directory called primary_transcripts/
+This outputs to a directory called `primary_transcripts/`
 
-3. Copy the `rename_genes.py` script from this repo to the primary_transcripts/ directory and run using `python rename_genes.py`
+3. Copy the `rename_genes.py` script from this repo to the `primary_transcripts/` directory and run using `python rename_genes.py`
 
 This outputs simplified renamed gene fasta files.
 
